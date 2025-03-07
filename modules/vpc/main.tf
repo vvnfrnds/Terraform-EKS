@@ -88,9 +88,9 @@ resource "aws_route_table" "private" {              //Create Route Table for Pri
     count = length(var.private_subnet_cidrs)
     vpc_id = aws_vpc.main.id
 
-    route = {
+    route {
         cidr_block = "0.0.0.0/0"
-        nat_gateway_id = aws_nat_gateway.name[count.index].id
+        nat_gateway_id = aws_nat_gateway.main[count.index].id
     }
 
     tags = {
